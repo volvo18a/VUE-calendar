@@ -1,0 +1,267 @@
+/*
+* @Author: wcs
+* @Date:   2016-09-09 16:10:21
+* @Last Modified by:   wcs
+* @Last Modified time: 2016-10-08 09:38:32
+*/
+*{
+	padding: 0;
+	margin: 0;
+}
+
+input {
+	width: 170px;
+	height: 37px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input.calendarDate{
+	padding-left: 35px;
+}
+.choose-img:before{
+	content: url("../img/vue-calendar-img/choose-rili.png");
+}
+#choose-text{
+	width: 200px;
+	height: 50px;
+	margin: 100px auto;
+	position: relative;
+}
+
+#choose-text i{
+	position: absolute;
+	left: 8px;
+	top: 7px;
+	z-index: 10;
+}
+
+#main{
+	position: relative;
+	width: 630px;
+	height: 400px;
+	background-color: red;
+	margin: 0 auto;
+}
+
+#main .left{
+	float: left;
+	width: 35%;
+	height: 100%;
+	background-color: #009688;
+	box-shadow: -10px 0px 20px rgba(0,0,0,.25);
+	overflow: hidden;
+}
+
+.left > a {
+	color: #fff;
+	display: block;
+	padding-left: 20px;
+	transition: all 0.5s ease-out;	
+}
+
+
+.year-item {
+	width: 100%;
+	height: 22px;
+	padding: 5px;
+	font-size: 20px;
+	color: #fff;
+	opacity: 0.8;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+}
+
+.year-item:hover {
+	color: #000;
+}
+
+.month-item {
+	width: 40%;
+	height: 40px;
+	padding-top: 10px;
+	font-size: 20px;
+	color: #fff;
+	opacity: 0.8;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+}
+
+.month-item:hover {
+	color: #000;
+}
+
+a.show-year {
+	margin-top: 15px;
+	margin-left: 5px;
+	font-size: 20px;
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+a.show-year:hover {
+	color: #000;
+}
+
+a.show-week {
+	margin-top: 10px;
+	font-size: 30px;
+}
+
+a.show-day {
+	margin-top: 10px;
+	font-size: 40px;
+}
+
+.select-year {
+	width: 100%;
+	height: auto;
+}
+
+.year-contral {
+	width: 100%;
+	height: 22px;
+	display: inline-block;
+	padding: 5px;
+	color: #fff;
+	opacity: 0.8;
+	cursor: pointer;
+	text-align: center;
+}
+
+.year-up:before {
+	content: url("../img/vue-calendar-img/up.png");
+}
+
+.year-up:hover {
+	content: url("../img/vue-calendar-img/ups.png");
+}
+
+.year-down:before {
+	content: url("../img/vue-calendar-img/down.png");
+}
+
+.year-down:hover {
+	content: url("../img/vue-calendar-img/downs.png");
+}
+
+#main .right{
+	display: inline-block;
+	width: 65%;
+	height: 100%;
+	background-color: #fff;
+	box-shadow: 10px 2px 20px rgba(0,0,0,.25);
+	overflow: hidden;
+}
+
+.date-pick {
+	margin: auto;
+	width: 90%;
+	height: 30px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.date-pick-show {
+	font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    color: black;
+}
+
+.date-pick > i {
+	cursor: pointer;
+}
+
+i.prev:before {
+	content: url("../img/vue-calendar-img/prev.png");
+}
+
+i.prev {
+	float: left;
+}
+
+i.next:before {
+	content: url("../img/vue-calendar-img/next.png");
+}
+
+.next {
+	float: right;
+}
+
+.right table {
+	display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+    margin: auto;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.right table tr th, td {
+    padding: 0;
+    height: 40px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+
+.right table thead {
+    color: #9b9b9b;
+}
+
+.right table tbody td {
+    font-size: 16px;
+    width: 50px;
+    font-weight: bold;
+}
+
+.right table tbody a {
+    display: inline-block;
+    padding-top: 10px;
+    width: 40px;
+    height: 30px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+
+.right table tbody a:hover {
+    background-color: #009688;
+    color: white;
+}
+
+.choose {
+    background-color: #009688;
+    color: white;
+}
+
+.table-calendarDate {
+	animation: show-table 0.5s ease-out;
+}
+
+.right .calendarDate-footer {
+    position: absolute;
+    top: 360px;
+    left: 460px;
+}
+
+.right .calendarDate-footer a {
+    float: right;
+    margin-left: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #009688;
+    cursor: pointer;
+}
+
+.right .calendarDate-footer a:hover {
+    color: #000;
+}
+
+

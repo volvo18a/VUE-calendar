@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/vue-calendar.css">
+    <script type="text/javascript" src="js/vue/vue.js"></script>
+    
+</head>
+
+<body>
+    <div id="all">
+        <div id="choose-text">
+            <input class="calendarDate" type="text" placeholder="点击选择时间" readonly="readonly" v-on:click="show_main" value="{{main_date}}">
+            <i class="choose-img"></i>
+        </div>
+        <div id="main" v-show="!show_all">
+            <div class="left">
+                <a class="show-year"  v-on:click="left_years">{{left_year}}</a>
+                <a class="show-week" v-show="show_week">周{{left_week}}</a>
+                <a class="show-day" v-show="show_day">{{left_month + "月" + left_day + "日"}}</a>
+                <div class="select-year" v-show="!show_year">
+                	<a class="year-contral" v-on:click="year_up"><i class="year-up"></i></a>	
+                	<a class="year-item" v-on:click="choose_left_year" v-for="year in 9">
+                        {{year+curYear}}
+                    </a>
+                	<a class="year-contral" v-on:click="year_down"><i class="year-down" ></i></a>
+                </div>
+                <div class="select-month" v-show="!show_month">
+                	
+                	<a class="month-item" v-on:click="choose_left_month" v-for="month in 12">  
+                        {{month+initMonth}}
+                    </a>             	
+                </div>
+            </div>
+            <div class="right">
+            	<div class="date-pick">
+            		<i class="prev" v-on:click="month_prev"></i>
+            		<a class="date-pick-show">{{ right_year + "/" + right_month }}</a>
+            		<i class="next" v-on:click="month_next"></i>
+            	</div>
+                <table class="table-calendarDate">
+                    <thead>
+                        <tr>
+                            <th v-for="right_week in weeks">{{ right_week }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td v-for="td in firstTr" track-by="$index"><a  v-on:click="choose_day($event, td)" v-bind:class="{'choose': td === selected && td != ''}">{{td}}</a></td>
+                        </tr>
+                        <tr v-for="tr in trs">
+                            <td v-for="td in tr"><a v-on:click="choose_day($event, td)" v-bind:class="{'choose': td === selected && td != ''}">{{td}}</a></td>
+                        </tr>
+                        <tr>
+                            <td v-for="td in lastTr" track-by="$index"><a v-on:click="choose_day($event, td)" v-bind:class="{'choose': td === selected && td != ''}" v-el:test>{{td}}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="calendarDate-footer">
+                    <a class="go-today" v-on:click="now">今天</a>
+                    <a class="go-time" v-on:click="sure">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/vue-calendar/vue-calendar.js"></script>
+</html>
