@@ -57,13 +57,19 @@ var vm = new Vue({
 	},
 	methods: {
 		init: function() {
+			var temp_day = this.mydate.getDay()
+			
 			this.left_year = this.mydate.getFullYear()
 			this.left_month = this.mydate.getMonth() + 1
-			this.left_week = this.arr_weekday[this.mydate.getDay() - 1]
+			if (temp_day == 0) {
+				this.left_week = this.arr_weekday[6]
+			} else {
+				this.left_week = this.arr_weekday[temp_day - 1]
+			}
 			this.left_day = this.mydate.getDate()
 			this.right_year = this.mydate.getFullYear()
 			this.right_month = this.mydate.getMonth() + 1
-			this.right_week = this.arr_weekday[this.mydate.getDay() - 1]
+
 			this.curYear = this.mydate.getFullYear()
 
 			this.selected = this.startDay
@@ -100,8 +106,8 @@ var vm = new Vue({
 			this.curYear = this.curYear + 10
 		},
 		choose_left_year: function(event) {
-			this.left_year = event.target.innerText;
-			this.right_year = event.target.innerText;
+			this.left_year = parseInt(event.target.innerText)
+			this.right_year = parseInt(event.target.innerText)
 			this.show_year = !this.show_year
 			this.show_week = !this.show_week
 			this.show_day = !this.show_day
@@ -115,8 +121,8 @@ var vm = new Vue({
 		},
 		choose_left_month: function(event) {
 			this.left_year = this.right_year
-			this.left_month = event.target.innerText;
-			this.right_month = event.target.innerText;
+			this.left_month = parseInt(event.target.innerText)
+			this.right_month = parseInt(event.target.innerText)
 			this.show_month = !this.show_month
 			this.show_week = !this.show_week
 			this.show_day = !this.show_day
@@ -135,7 +141,9 @@ var vm = new Vue({
 			if (this.right_month == 1) {
 				this.right_month = 12
 				this.right_year = this.right_year - 1
-				this.left_year = this.left_year - 1
+				if (this.left_year != '去选年' && this.left_year != '去选月') {
+					this.left_year = this.right_year
+				}
 
 			} else {
 				this.right_month = this.right_month - 1
@@ -158,7 +166,10 @@ var vm = new Vue({
 			} else {
 				this.right_month = 1
 				this.right_year = this.right_year + 1
-				this.left_year = this.right_year
+				if (this.left_year != '去选年' && this.left_year != '去选月') {
+					this.left_year = this.right_year
+				}
+				
 			}
 			this.left_month = this.right_month
 
@@ -190,7 +201,7 @@ var vm = new Vue({
 			for (var i = 0; i < 7 - dateNum; i++) {
 				this.firstTr.push(dayStart++)
 			}
-
+			
 			if (dateNum == 6 || next_dateNum == 1 || next_dateNum == 0) {
 				for (var i = 0; i < 4; i++) {
 					this.trs[i] = []
@@ -238,7 +249,7 @@ var vm = new Vue({
 					this.left_week = this.arr_weekday[weekday - 1]
 				}
 				this.left_month = this.right_month
-				this.left_day = event.target.innerText
+				this.left_day = parseInt(event.target.innerText)
 				this.main_date = this.right_year + '-' + this.left_month + '-' + this.left_day
 			}
 
